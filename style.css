@@ -22,3 +22,22 @@ td {
   height: 50px; 
   width: 50px;
 }
+
+.red {
+  background-color: red;
+}
+.blue {
+  background-color: blue;
+}
+.green {
+  background-color: green;
+}
+.yellow {
+  background-color: yellow;
+}
+.black {
+  background-color: black;
+}
+.orange {
+  background-color: orange;
+}

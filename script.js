@@ -1,15 +1,25 @@
 // Your code here
 const table = document.getElementById('theTable')
-const newTr = document.createElement('tr')
 
 function makeRow () {
+    const newTr = document.createElement('tr')
+    for (let i = 0; i < 20; i++) {
+        const td = document.createElement('td')
+        newTr.appendChild(td)
+    }
     table.appendChild(newTr)
-    console.log("function")
+    
 }
 
-console.log("before event listener")
+
 const addRowButton = document.getElementById('add-row')
 
 addRowButton.addEventListener('click', makeRow)
 
-console.log("after event listener")
+function colorize(clickEvent) {
+if (clickEvent.target.matches("td")) {
+    console.log("clicked!")
+}
+}
+
+table.addEventListener('click', colorize)
