@@ -62,3 +62,30 @@ function clearTheGrid () {
 }
 
 clearButton.addEventListener("click", clearTheGrid);
+
+
+/////// Fill Buttons ////////
+
+const fillAllButton = document.getElementById("fill-All")
+
+function fillAll () {
+  for (let i = 0; i < tdArray.length; i++) {
+    tdArray[i].className = color;
+  }
+}
+
+fillAllButton.addEventListener("click", fillAll);
+
+const fillAllBlankPixels = document.getElementById("fill-all-blank")
+
+function fillAllBlank () {
+  for(let i = 0; i < tdArray.length; i++) {
+    if (tdArray[i].className.length) {
+      console.log("I'm not doing anything")
+    } else {
+      tdArray[i].className = color;
+    }
+  }
+}
+
+fillAllBlankPixels.addEventListener("click", fillAllBlank);
