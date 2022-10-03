@@ -1,5 +1,6 @@
 // Your code here
 const table = document.getElementById("theTable");
+let color = "red";
 
 function makeRow() {
   const newTr = document.createElement("tr");
@@ -14,15 +15,20 @@ const addRowButton = document.getElementById("add-row");
 
 addRowButton.addEventListener("click", makeRow);
 
+const select = document.getElementsByTagName("select");
+
+select.addEventListener('change', function (event) {
+  color = event.target.value;
+});
+
 function colorize(clickEvent) {
-  const target = clickEvent.target;
+  const target = clickEvent.target
   if (clickEvent.target.matches("td")) {
     if (target.className.length) {
       target.className = "";
     } else {
-      clickEvent.target.className = "red";
+      target.className = color;
     }
   }
 }
-
 table.addEventListener("click", colorize);
