@@ -1,4 +1,7 @@
 // Your code here
+
+
+//////// The function that adds a row of pixels to the table. ////////
 const table = document.getElementById("theTable");
 let color = "red";
 
@@ -12,15 +15,10 @@ function makeRow() {
 }
 
 const addRowButton = document.getElementById("add-row");
-
 addRowButton.addEventListener("click", makeRow);
 
-const select = document.getElementsByTagName("select");
 
-select.addEventListener('change', function (event) {
-  color = event.target.value;
-});
-
+///////// The function that toggles the color of an individual cell. ///////
 function colorize(clickEvent) {
   const target = clickEvent.target
   if (clickEvent.target.matches("td")) {
@@ -32,3 +30,14 @@ function colorize(clickEvent) {
   }
 }
 table.addEventListener("click", colorize);
+
+
+//////// The function that changes the color based on the option chosen in the drop-down menu. ////////
+
+const select = document.getElementsByTagName("select")[0];
+
+select.addEventListener('change', function (event) {
+  color = event.target.value;
+});
+
+
