@@ -14,4 +14,11 @@ body {
   align-items: center;
 }
 
+
 /* your CSS below! */
+
+td {
+  background-color: lightgrey;
+  height: 50px; 
+  width: 50px;
+}
