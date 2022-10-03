@@ -29,7 +29,15 @@ function colorize(clickEvent) {
     }
   }
 }
-table.addEventListener("click", colorize);
+
+let mouseDown = false; 
+  document.body.onmousedown = () => {mouseDown = true;};
+  document.body.onmouseup = () => {mouseDown = false;};
+
+table.addEventListener("mousedown", function (event) {colorize(event)});
+table.addEventListener("mouseover", function (event) {
+  if (mouseDown === true) {colorize(event)}});
+
 
 
 //////// The function that changes the color based on the option chosen in the drop-down menu. ////////
@@ -41,3 +49,16 @@ select.addEventListener('change', function (event) {
 });
 
 
+///// Clear Grid Button //////
+
+const clearButton = document.getElementById("clear-grid");
+
+const tdArray = document.getElementsByTagName("td")
+
+function clearTheGrid () {
+  for (let i = 0; i < tdArray.length; i++) {
+    tdArray[i].className = "";
+  }
+}
+
+clearButton.addEventListener("click", clearTheGrid);
