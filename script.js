@@ -1,13 +1,13 @@
 // Your code here
 
-
 //////// The function that adds a row of pixels to the table. ////////
 const table = document.getElementById("theTable");
 let color = "red";
+let columns = 20
 
 function makeRow() {
   const newTr = document.createElement("tr");
-  for (let i = 0; i < 20; i++) {
+  for (let i = 0; i < columns; i++) {
     const td = document.createElement("td");
     newTr.appendChild(td);
   }
@@ -17,10 +17,9 @@ function makeRow() {
 const addRowButton = document.getElementById("add-row");
 addRowButton.addEventListener("click", makeRow);
 
-
 ///////// The function that toggles the color of an individual cell. ///////
 function colorize(clickEvent) {
-  const target = clickEvent.target
+  const target = clickEvent.target;
   if (clickEvent.target.matches("td")) {
     if (target.className.length) {
       target.className = "";
@@ -30,32 +29,38 @@ function colorize(clickEvent) {
   }
 }
 
-let mouseDown = false; 
-  document.body.onmousedown = () => {mouseDown = true;};
-  document.body.onmouseup = () => {mouseDown = false;};
+let mouseDown = false;
+document.body.onmousedown = () => {
+  mouseDown = true;
+};
+document.body.onmouseup = () => {
+  mouseDown = false;
+};
 
-table.addEventListener("mousedown", function (event) {colorize(event)});
+table.addEventListener("mousedown", function (event) {
+  colorize(event);
+});
 table.addEventListener("mouseover", function (event) {
-  if (mouseDown === true) {colorize(event)}});
-
-
+  if (mouseDown === true) {
+    colorize(event);
+  }
+});
 
 //////// The function that changes the color based on the option chosen in the drop-down menu. ////////
 
-const select = document.getElementsByTagName("select")[0];
+const selectColor = document.getElementById("select-color");
 
-select.addEventListener('change', function (event) {
+selectColor.addEventListener("change", function (event) {
   color = event.target.value;
 });
-
 
 ///// Clear Grid Button //////
 
 const clearButton = document.getElementById("clear-grid");
 
-const tdArray = document.getElementsByTagName("td")
+const tdArray = document.getElementsByTagName("td");
 
-function clearTheGrid () {
+function clearTheGrid() {
   for (let i = 0; i < tdArray.length; i++) {
     tdArray[i].className = "";
   }
@@ -63,12 +68,11 @@ function clearTheGrid () {
 
 clearButton.addEventListener("click", clearTheGrid);
 
-
 /////// Fill Buttons ////////
 
-const fillAllButton = document.getElementById("fill-All")
+const fillAllButton = document.getElementById("fill-All");
 
-function fillAll () {
+function fillAll() {
   for (let i = 0; i < tdArray.length; i++) {
     tdArray[i].className = color;
   }
@@ -76,12 +80,12 @@ function fillAll () {
 
 fillAllButton.addEventListener("click", fillAll);
 
-const fillAllBlankPixels = document.getElementById("fill-all-blank")
+const fillAllBlankPixels = document.getElementById("fill-all-blank");
 
-function fillAllBlank () {
-  for(let i = 0; i < tdArray.length; i++) {
+function fillAllBlank() {
+  for (let i = 0; i < tdArray.length; i++) {
     if (tdArray[i].className.length) {
-      console.log("I'm not doing anything")
+      console.log("I'm not doing anything");
     } else {
       tdArray[i].className = color;
     }
@@ -89,3 +93,15 @@ function fillAllBlank () {
 }
 
 fillAllBlankPixels.addEventListener("click", fillAllBlank);
+
+
+///////// Selector that allows the user to pick how many columns each row will have ////////
+
+const selectColumns = document.getElementById("select-columns");
+
+selectColumns.addEventListener("change", function (event) {
+  columns = Number(event.target.value);
+});
+
+///////// Buttons to add/remove rows and columns, I'm not sure its possible ////////
+
